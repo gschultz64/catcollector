@@ -1,0 +1,52 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Cat Collector</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+  <nav>
+    <div class="nav-wrapper blue-grey">
+      <a href="/" class="brand-logo">Cat Collector 🐱</a>
+      <ul class="right">
+        <li>
+          <a href="/">Home</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li>
+          <a href="/user/{{ user.username }}">Hello, {{user.username}}!</a>
+        </li>
+        <li>
+          <a href="{% url 'new' %}">New Cat</a>
+        </li>
+        <li>
+          <a href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% else %}
+        <li>
+          <a href="{% url 'login' %}">Login</a>
+        </li>
+        {% endif %}
+
+      </ul>
+    </div>
+  </nav>
+  <main>
+    <div class="container">
+      {% block content %} {% endblock %}
+    </div>
+  </main>
+  <footer class="footer blue-grey">All Cats Reserved for the collector 2018</footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="{% static 'app.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+{% extends 'base.html' %} 
+{% block content %}
+  <div class="row">
+    {% for cat in cats %}
+      <div class="col s4 ">
+        <div class="card grey lighten-5">
+          <div class="card-image">
+            <img src="https://placekitten.com/400/400" alt="cute freakin cat">
+          </div>
+          <div class="card-content">
+            <a href="/user/{{cat.user.username}}"><p> {{ cat.name }}</p></a>
+            {% if cat.age < 100 %} 
+              <p>Age: {{ cat.age }}</p>
+            {% else %}
+              <p>Age: Cat is old as hell.</p>
+            {% endif %}
+          </div>
+          <div class="card-action">
+            <a class="btn waves-effect waves-light like-btn" data-id="{{cat.id}}">
+            Likes: {% if cat.likes > 0 %} {{ cat.likes }} {% else %} None :( {% endif %}
+            </a>
+            <a class="btn waves-effect waves-light purple" href='/{{cat.id}}'>More Info!</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

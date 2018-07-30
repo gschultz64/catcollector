@@ -1,0 +1,36 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background: #eceff1;
+}
+
+.brand-logo {
+  margin-left: .5em;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+h1{
+  color: rebeccapurple;
+}
+
+form {
+  text-align: left;
+}
+
+footer {
+  text-align: center;
+  padding: 1em;
+  color: white;
+}
+
+.btn {
+  margin: .5em;
+}
+
+.card-action {
+  text-align: center;
+}
