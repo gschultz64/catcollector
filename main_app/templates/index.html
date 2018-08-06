@@ -8,12 +8,18 @@
             <img src="https://placekitten.com/400/400" alt="cute freakin cat">
           </div>
           <div class="card-content">
-            <a href="/user/{{cat.user.username}}"><p> {{ cat.name }}</p></a>
+            <a href="/{{cat.id}}/"><h4>{{ cat.name }}</h4></a>
             {% if cat.age < 100 %} 
               <p>Age: {{ cat.age }}</p>
             {% else %}
               <p>Age: Cat is old as hell.</p>
             {% endif %}
+            <p>Toys:</p>
+            <ul class="toys">
+              {% for toy in cat.cattoys.all %} <!-- no parentheses in django templating lang -->
+              <li>{{ toy.name }}</li>
+              {% endfor %}
+            </ul>
           </div>
           <div class="card-action">
             <a class="btn waves-effect waves-light like-btn" data-id="{{cat.id}}">

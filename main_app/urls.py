@@ -10,4 +10,5 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
     path('like_cat/', views.like_cat, name='like_cat'),
+    path('add_toy_to_cat/', views.add_toy_to_cat, name='add_toy_to_cat'),
 ]

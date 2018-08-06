@@ -1,8 +1,18 @@
-{% extends 'base.html' %}
-
-{% block content %}
-  <h1>{{ cat }}</h1>
-  <p>Breed: {{ cat.breed }}</p>
-  <p>Description: {{ cat.description }}</p>
-  <p>Age: {{ cat.age }}</p>
+{% extends 'base.html' %} {% block content %}
+<h1>{{ cat }}</h1>
+<p><em>"{{quote}}"</em></p>
+<p>Breed: {{ cat.breed }}</p>
+<p>Description: {{ cat.description }}</p>
+<p>Age: {{ cat.age }}</p>
+<p>Toys:</p>
+<ul class="toys">
+  {% for toy in cat.cattoys.all %}
+  <!-- no parentheses in django templating lang -->
+  <li>{{ toy.name }}</li>
+  {% endfor %}
+</ul>
+<p>Add a toy:</p>
+{% for toy in cattoys %}
+  <a class="addtoy" data-cat="{{ cat.id }}" data-toy="{{ toy.id }}" href="#">{{ toy }}</a><br/>
+{% endfor %}
 {% endblock %}
